@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* TrustRent design tokens (spec 1.1). Light theme only for MVP. */
+@theme {
+  --color-ink: #101b2d;
+  --color-ink-soft: #2a3649;
+  --color-muted: #5b6779;
+  --color-subtle: #8a94a6;
+  --color-line: #e3e8ef;
+  --color-line-strong: #cfd7e2;
+  --color-brand: #1769aa;
+  --color-brand-dark: #0f5289;
+  --color-brand-soft: #e8f1fa;
+  --color-canvas: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-success: #18794e;
+  --color-success-soft: #e6f4ec;
+  --color-warning: #a15c00;
+  --color-warning-soft: #fdf3e3;
+  --color-danger: #b42318;
+  --color-danger-soft: #fdecea;
+
+  --radius-card: 14px;
+  --radius-control: 10px;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(16 27 45 / 0.04), 0 4px 16px rgb(16 27 45 / 0.06);
+  --shadow-pop: 0 8px 32px rgb(16 27 45 / 0.14);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-[var(--radius-control)] px-4 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-brand text-white hover:bg-brand-dark;
+}
+@utility btn-secondary {
+  @apply btn border border-line-strong bg-surface text-ink hover:bg-canvas;
+}
+@utility btn-ghost {
+  @apply btn text-ink-soft hover:bg-canvas;
+}
+@utility btn-danger {
+  @apply btn bg-danger text-white hover:opacity-90;
+}
+@utility card {
+  @apply rounded-[var(--radius-card)] border border-line bg-surface;
+}
+@utility input {
+  @apply w-full rounded-[var(--radius-control)] border border-line-strong bg-surface px-3 py-2.5 text-sm text-ink placeholder:text-subtle focus:border-brand focus:ring-2 focus:ring-brand/20 focus:outline-none aria-[invalid=true]:border-danger;
+}
+@utility label {
+  @apply mb-1.5 block text-sm font-medium text-ink;
+}
+@utility eyebrow {
+  @apply text-xs font-semibold tracking-wider text-muted uppercase;
+}
